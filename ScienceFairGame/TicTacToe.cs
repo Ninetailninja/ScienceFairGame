@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ScienceFairGame
 {
@@ -265,6 +266,113 @@ namespace ScienceFairGame
             #endregion thirdRow
 
            
+        }
+
+        public String checkWin()
+        {
+            String win = "";
+
+
+            if (checkRow() == 'X' || checkCol() == 'X')
+                win = "Player Wins!!!!";
+            else if (checkRow() == 'O' || checkCol() == 'O')
+                win = "AI Wins!!!";
+            else
+                win = "";
+            
+
+
+                return win;
+        }
+
+        private char checkRow()
+        {
+            int count = 0;
+
+            #region checkXRow
+            for (int row = 0; row < 3; row++)
+            {
+                count = 0;
+                for (int col = 0; col < 3; col++)
+                {
+                    if (boardPieces[row][col] == 'X')
+                        count++;
+                    
+                }
+                if (count == 3)
+                {
+                    return 'X';
+                }
+
+            }
+            #endregion checkXRow
+
+            #region checkORow
+            for (int row = 0; row < 3; row++)
+            {
+                count = 0;
+                for (int col = 0; col < 3; col++)
+                {
+                    if (boardPieces[row][col] == 'O')
+                        count++;
+
+                }
+                if (count == 3)
+                {
+                    return 'O';
+                }
+
+            }
+            #endregion checkORow
+
+            return 'N';
+        }
+
+        private char checkCol()
+        {
+            int count = 0;
+
+            
+            for (int col = 0; col < 3; col++)
+            {
+                count = 0;
+                for (int row = 0; row < 3; row++)
+                {
+                    if (boardPieces[row][col] == 'X')
+                        count++;
+                    
+                    if (count == 3)
+                        return 'X';
+                    
+                }
+            }
+
+            for (int col = 0; col < 3; col++)
+            {
+                count = 0;
+                for (int row = 0; row < 3; row++)
+                {
+                    if (boardPieces[row][col] == 'O')
+                        count++;
+
+                    if (count == 3)
+                        return 'O';
+
+                }
+            }
+            return 'N';
+        }
+
+        public void newGame()
+        {
+
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    boardPieces[row][col] = ' ';
+                }
+            }
         }
     }
 }
