@@ -7,12 +7,16 @@ using System.Windows.Forms;
 
 namespace ScienceFairGame
 {
+    /* class for playing the game.
+     */
     class TicTacToe
     {
         Char[][] boardPieces;
         int rows;
         int columns;
 
+        /*Constructor initializes values
+         */
         public TicTacToe()
         {
             rows = 3;
@@ -25,6 +29,8 @@ namespace ScienceFairGame
             boardPieces[2] = new Char[columns];
         }
 
+        /* Places a piece at the specified location.
+         */
         public void setPiece(int row, int col, char piece, Graphics g, Brush brush)
         {
             boardPieces[row][col] = piece;
@@ -32,6 +38,8 @@ namespace ScienceFairGame
             paintPiece(row, col, piece, g, brush);
         }
 
+        /* Draws the Piece at the specified location.
+         */ 
         private void paintPiece(int row, int col, char piece, Graphics g, Brush brush)
         {
             Brush innerCircle = new SolidBrush(Form1.DefaultBackColor);
@@ -268,6 +276,9 @@ namespace ScienceFairGame
            
         }
 
+        /* Checks if the player won, or if the AI won.
+         * returns a string, either "Player Wins!!!!" or "AI Wins!!!."
+         */
         public String checkWin()
         {
             String win = "";
@@ -285,6 +296,8 @@ namespace ScienceFairGame
                 return win;
         }
 
+        /* Checks all rows for a horizontal win.
+         */
         private char checkRow()
         {
             int count = 0;
@@ -328,6 +341,8 @@ namespace ScienceFairGame
             return 'N';
         }
 
+        /* Checks all columns for a vertical win.
+         */
         private char checkCol()
         {
             int count = 0;
@@ -363,6 +378,8 @@ namespace ScienceFairGame
             return 'N';
         }
 
+        /* Starts a new game of Tic-Tac-Toe.
+         */
         public void newGame()
         {
 
